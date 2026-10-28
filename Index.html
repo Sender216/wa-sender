@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WA Sender · Langganan</title>
+</head>
+<body>
+<div id="memuat" style="font-family:system-ui;padding:40px;text-align:center;color:#6b7280">Memuat halaman...</div>
+<script>
+// Ganti dengan URL Web App (berakhiran /exec)
+const WEBAPP = "https://script.google.com/macros/s/AKfycbyo-sTB3kv1J-MxVFbdSbT7WrXW3PyVnJjB8AmcA2idJyWy7pCJt0sWh_6DBIXM-gVsAw/exec";
+
+const nama = "cbPage" + Date.now();
+window[nama] = function (html) {
+  document.open();
+  document.write(html);
+  document.close();
+};
+
+const s = document.createElement("script");
+s.src = WEBAPP + "?a=page&callback=" + nama;
+s.onerror = function () {
+  document.getElementById("memuat").textContent = "Gagal memuat halaman. Coba lagi nanti.";
+};
+document.body.appendChild(s);
+</script>
+</body>
+</html>
